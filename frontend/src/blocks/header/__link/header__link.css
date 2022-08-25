@@ -1,0 +1,6 @@
+.header__link{
+    padding-top: 7px;
+}
+.header__link:hover {
+    opacity: 0.85;
+}

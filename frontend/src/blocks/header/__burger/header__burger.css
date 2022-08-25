@@ -1,0 +1,27 @@
+.header__burger {
+  width: 24px;
+  height: 0;
+  border-bottom: 3px solid #FFFFFF;
+  position: relative;
+  margin: auto;
+}
+
+.header__burger:before {
+  content: '';
+  width: 24px;
+  height: 0;
+  border-bottom: 3px solid #FFFFFF;
+  position: absolute;
+  left: 0;
+  top: -7px;
+}
+
+.header__burger:after {
+  content: '';
+  width: 24px;
+  height: 0;
+  border-bottom: 3px solid #FFFFFF;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+}

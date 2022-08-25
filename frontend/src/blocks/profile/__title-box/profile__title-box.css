@@ -1,0 +1,11 @@
+.profile__title-box{
+    display: flex;
+    color: #FFFFFF;
+    padding: 25px 0px 0px 27px;
+    justify-content: center;
+}
+@media screen and ( min-width: 1280px ){
+    .profile__title-box{
+        padding: 22px 0px 0px 30px;
+    }
+}

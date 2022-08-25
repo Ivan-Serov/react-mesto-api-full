@@ -1,0 +1,12 @@
+.header__burger_active {
+  transform: rotate(45deg);
+}
+
+.header__burger_active:before {
+  top: 0;
+  transform: rotate(-90deg);
+}
+
+.header__burger_active:after {
+  display: none;
+}

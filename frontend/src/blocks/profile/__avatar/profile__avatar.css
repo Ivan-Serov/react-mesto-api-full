@@ -1,0 +1,22 @@
+.profile__avatar{
+    position: relative;
+}
+.profile__avatar::after{
+    content: '';
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    background-color: #000;
+    opacity: .3;
+    z-index: 1;
+    transition: opacity .6s;
+    top: 0px;
+    left: 0px;
+}
+
+.profile__avatar:hover::after{
+    opacity: .8;
+    background-image: url(../../../images/Vector.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,11 @@
+.popup__container{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 39px 0px;
+    position: relative;
+}
+@media screen and ( min-width: 1280px ){
+    .popup__container{
+        padding-top: 38px;
+    }
+}

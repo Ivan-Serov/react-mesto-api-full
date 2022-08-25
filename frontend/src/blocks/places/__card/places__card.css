@@ -1,0 +1,21 @@
+.places__card{
+    display: flex;
+    flex-wrap: wrap;
+    width:282px;
+    background-color: #FFFFFF;
+    border-radius: 11px;
+    overflow: hidden;
+    justify-content: space-between;
+    padding-bottom: 25px;
+    margin-bottom: 20px;
+    position: relative;
+}
+@media screen and ( min-width: 1280px ){
+    .places__card{
+        height: 336px;
+        margin-right:17px;
+    }
+    .places__card:nth-child(3n){
+        margin-right:0px;
+    }
+}

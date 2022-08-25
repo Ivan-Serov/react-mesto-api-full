@@ -1,0 +1,15 @@
+.header__nav{
+    
+}
+
+@media screen and (max-width: 680px) {
+  .header__right-block {
+    flex-direction: column;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+    margin: 0 0 27px 0;
+    padding: 0 0 0 0;
+    height: 150px;
+    justify-content: center;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,21 @@
+.header{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    padding: 28px 27px 30px;
+    width: 266px;
+    /* opacity: 0.7; */
+    border-bottom: 1px solid rgba(84, 84, 84, .7);
+}
+
+@media screen and ( min-width: 768px ){
+    .header{
+        padding: 45px 0px 40px;
+        width: 708px;
+    }
+}
+@media screen and ( min-width: 1280px ){
+    .header{
+        width: 880px;
+    }
+}

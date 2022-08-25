@@ -1,0 +1,22 @@
+.page{
+    position: relative;
+    min-width: 320px;
+    margin: 0 auto;
+    background: #000000;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media screen and ( min-width: 768px ){
+    .page{
+        max-width: 768px; 
+    } 
+}
+@media screen and ( min-width: 1280px ){
+    .page{
+        max-width: 880px; 
+    } 
+}
