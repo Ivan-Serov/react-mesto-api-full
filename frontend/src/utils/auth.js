@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://api.mesto.IvanSerov.nomoredomains.sbs'//'http://api.mesto.IvanSerov.nomoredomains.sbs';//https://auth.nomoreparties.co/
+export const BASE_URL = 'http://api.mesto.ivanserov.nomoredomains.sbs'//'http://api.mesto.IvanSerov.nomoredomains.sbs';//https://auth.nomoreparties.co/
 const checkResult = res => {
   if (res.ok) {
     return res.json();
