@@ -29,19 +29,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-/* const options = {
+const options = {
   origin: [
     'http://localhost:3000',
-    'http://mesto.ivanserov.nomoredomains.sbs/',
-    'https://mesto.ivanserov.nomoredomains.sbs/',
-    'http://api.mesto.ivanserov.nomoredomains.sbs/',
-    'https://api.mesto.ivanserov.nomoredomains.sbs/',
+    'http://mesto.IvanSerov.nomoredomains.sbs/',
+    'https://mesto.IvanSerov.nomoredomains.sbs/',
+    'http://api.mesto.IvanSerov.nomoredomains.sbs/',
+    'https://api.mesto.IvanSerov.nomoredomains.sbs/',
   ],
   credentials: true,
 };
 
-app.use('*', cors(options)); */
-app.use(cors());
+app.use('*', cors(options));
+//app.use(cors());
 
 /* app.get('/crash-test', () => {
   setTimeout(() => {
