@@ -28,7 +28,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
-app.use(cors());
+
+const options = {
+  origin: [
+    'http://localhost:3000',
+    'http://mesto.IvanSerov.nomoredomains.sbs/',
+    'https://mesto.IvanSerov.nomoredomains.sbs/',
+    'http://api.mesto.IvanSerov.nomoredomains.sbs/',
+    'https://api.mesto.IvanSerov.nomoredomains.sbs/',
+  ],
+  credentials: true,
+};
+
+app.use('*', cors(options));
+
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
