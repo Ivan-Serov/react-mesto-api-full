@@ -14,6 +14,12 @@ const { PORT, DB_URL } = require('./constants/constants');
 
 const app = express();
 
+const corsOptions = {
+  origin: 'http://mesto.IvanSerov.nomoredomains.sbs',
+  optionsSuccessStatus: 200,
+  credentials: true,
+};
+
 app.use(helmet());
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -28,8 +34,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
-app.use(cors());
-
+app.use(cors(corsOptions));
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 app.use(require('./routes/auth'));
 
 app.use(auth);
