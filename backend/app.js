@@ -27,7 +27,7 @@ app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const allowedCors = [
+/* const allowedCors = [
   'http://localhost:3000/',
   'http://localhost:3001/',
   'http://mesto.IvanSerov.nomoredomains.sbs/signup',
@@ -51,7 +51,7 @@ app.use((req, res, next) => {
     return res.end();
   }
   next();
-});
+}); */
 
 app.use(requestLogger);
 
@@ -67,7 +67,7 @@ app.use(requestLogger);
 };
 
 app.use('*', cors(options)); */
-//app.use(cors());
+app.use(cors());
 
 app.get('/crash-test', () => {
   setTimeout(() => {

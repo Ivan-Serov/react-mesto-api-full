@@ -80,7 +80,7 @@ class Api {
 }
 
 export const api = new Api({
-  url:'http://api.mesto.IvanSerov.nomoredomains.sbs',//'https://api.mesto.IvanSerov.nomoredomains.sbs'
+  url:'https://api.mesto.IvanSerov.nomoredomains.sbs',//'https://api.mesto.IvanSerov.nomoredomains.sbs'
   headers: {
     'Content-Type': 'application/json',
   },});
