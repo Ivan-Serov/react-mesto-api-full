@@ -28,7 +28,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const allowedCors = [
-  'http://localhost:3000',
+  'http://localhost:3000/',
+  'http://localhost:3001/',
   'http://mesto.IvanSerov.nomoredomains.sbs/',
   'https://mesto.IvanSerov.nomoredomains.sbs/',
   'http://api.mesto.IvanSerov.nomoredomains.sbs/',
