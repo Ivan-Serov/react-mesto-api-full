@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-//const cors = require('cors');
+const cors = require('cors');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 const rateLimit = require('express-rate-limit');
@@ -10,9 +10,11 @@ const { auth } = require('./middlewares/auth');
 const { handleError } = require('./middlewares/handleError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const allowedCors = [
+/* const allowedCors = [
   'https://mesto.ivanserov.nomoredomains.sbs',
-];
+  'http://mesto.ivanserov.nomoredomains.sbs',
+  'localhost:3000'
+]; */
 const { PORT, DB_URL } = require('./constants/constants');
 
 const app = express();
@@ -30,7 +32,8 @@ app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
+// eslint-disable-next-line consistent-return
+/* app.use((req, res, next) => {
   const { origin } = req.headers;
   const requestHeaders = req.headers['access-control-request-headers'];
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
@@ -44,11 +47,11 @@ app.use((req, res, next) => {
     }
   }
   next();
-});
+}); */
 
 app.use(requestLogger);
 
-//app.use(cors());
+app.use(cors());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
