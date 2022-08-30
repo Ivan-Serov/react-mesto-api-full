@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
-const cors = require('cors');
+
 const {
   createUser, login,
 } = require('../controllers/users');
