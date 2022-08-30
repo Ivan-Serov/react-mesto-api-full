@@ -50,8 +50,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 }); */
 
 app.use(requestLogger);
+const options = {
+  origin: [
+    'https://mesto.ivanserov.nomoredomains.sbs',
+    'http://mesto.ivanserov.nomoredomains.sbs',
+    'localhost:3000',
+    'http://api.mesto.ivanserov.nomoredomains.sbs',
+    'https://api.mesto.ivanserov.nomoredomains.sbs',
+  ],
+  credentials: true,
+};
 
-app.use(cors());
+app.use('*', cors(options));
+
+//app.use(cors());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
