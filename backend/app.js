@@ -10,11 +10,6 @@ const { auth } = require('./middlewares/auth');
 const { handleError } = require('./middlewares/handleError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-/* const allowedCors = [
-  'https://mesto.ivanserov.nomoredomains.sbs',
-  'http://mesto.ivanserov.nomoredomains.sbs',
-  'localhost:3000'
-]; */
 const { PORT, DB_URL } = require('./constants/constants');
 
 const app = express();
@@ -32,26 +27,9 @@ app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// eslint-disable-next-line consistent-return
-/* app.use((req, res, next) => {
-  const { origin } = req.headers;
-  const requestHeaders = req.headers['access-control-request-headers'];
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  if (allowedCors.includes(origin)) {
-    const { method } = req;
-    res.header('Access-Control-Allow-Origin', origin);
-    if (method === 'OPTIONS') {
-      res.header('Access-Control-Allow-Headers', requestHeaders);
-      res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-      return res.end();
-    }
-  }
-  next();
-}); */
-
 app.use(requestLogger);
 
-app.use(cors());
+
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -60,6 +38,7 @@ app.get('/crash-test', () => {
 });
 app.use(require('./routes/auth'));
 
+app.use(cors());
 app.use(auth);
 app.use('/users', require('./routes/user'));
 app.use('/cards', require('./routes/card'));
