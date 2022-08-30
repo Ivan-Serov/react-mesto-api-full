@@ -43,11 +43,11 @@ app.use(requestLogger);
 app.use('*', cors(options)); */
 app.use(cors());
 
-/* app.get('/crash-test', () => {
+app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
-}); */
+});
 app.use(require('./routes/auth'));
 
 app.use(auth);
