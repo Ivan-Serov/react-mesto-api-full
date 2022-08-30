@@ -27,6 +27,31 @@ app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const allowedCors = [
+  'http://localhost:3000',
+  'http://mesto.IvanSerov.nomoredomains.sbs/',
+  'https://mesto.IvanSerov.nomoredomains.sbs/',
+  'http://api.mesto.IvanSerov.nomoredomains.sbs/',
+  'https://api.mesto.IvanSerov.nomoredomains.sbs/',
+];
+
+app.use((req, res, next) => {
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+  const { origin } = req.headers;
+  const { method } = req;
+  const requestHeaders = req.headers['access-control-request-headers'];
+
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+    res.header('Access-Control-Allow-Headers', requestHeaders);
+    return res.end();
+  }
+  next();
+});
+
 app.use(requestLogger);
 
 /* const options = {
@@ -41,7 +66,7 @@ app.use(requestLogger);
 };
 
 app.use('*', cors(options)); */
-app.use(cors());
+//app.use(cors());
 
 app.get('/crash-test', () => {
   setTimeout(() => {

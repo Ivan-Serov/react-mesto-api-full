@@ -161,6 +161,7 @@ function App() {
         if (res.token) {
           localStorage.setItem('jwt', res.token);
           setUserEmail(email);
+          console.log(email);
         }
         setLoggedIn(true);
       })
@@ -194,6 +195,7 @@ function App() {
   }
 
   const handleRegister = (password, email) => {
+    console.log(email, password);
     auth.register(email, password)
       .then((res) => {
         if (res) {
