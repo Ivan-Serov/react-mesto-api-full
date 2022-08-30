@@ -5,12 +5,11 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 const rateLimit = require('express-rate-limit');
-const { celebrate, Joi } = require('celebrate');
 const { ERR_NOT_FOUND } = require('./utils/errorNumber');
-//const { auth } = require('./middlewares/auth');
+const { auth } = require('./middlewares/auth');
 const { handleError } = require('./middlewares/handleError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { createUser, login } = require('./controllers/users');
+
 /* const allowedCors = [
   'https://mesto.ivanserov.nomoredomains.sbs',
   'http://mesto.ivanserov.nomoredomains.sbs',
@@ -59,35 +58,9 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
-app.post(
-  '/signin',
-  celebrate({
-    body: Joi.object().keys({
-      email: Joi.string().required().email(),
-      password: Joi.string().required(),
-    }),
-  }),
-  login,
-);
+app.use(require('./routes/auth'));
 
-app.post(
-  '/signup',
-  celebrate({
-    body: Joi.object().keys({
-      email: Joi.string().required().email(),
-      password: Joi.string().required(),
-      name: Joi.string().min(2).max(30),
-      about: Joi.string().min(2).max(30),
-      avatar: Joi.string().pattern(
-        /https?:\/\/(www\.)?[a-zA-Z\d\-.]{1,}\.[a-z]{1,6}([/a-z0-9\-._~:?#[\]@!$&'()*+,;=]*)/,
-      ),
-    }),
-  }),
-  createUser,
-);
-/* app.use(require('./routes/auth'));
-
-app.use(auth); */
+app.use(auth);
 app.use('/users', require('./routes/user'));
 app.use('/cards', require('./routes/card'));
 
