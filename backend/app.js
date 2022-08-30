@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
 
-const options = {
+/* const options = {
   origin: [
     'http://localhost:3000',
     'http://mesto.IvanSerov.nomoredomains.sbs/',
@@ -40,8 +40,8 @@ const options = {
   credentials: true,
 };
 
-app.use('*', cors(options));
-//app.use(cors());
+app.use('*', cors(options)); */
+app.use(cors());
 
 /* app.get('/crash-test', () => {
   setTimeout(() => {
