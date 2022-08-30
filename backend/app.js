@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+//const cors = require('cors');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 const rateLimit = require('express-rate-limit');
@@ -10,6 +10,9 @@ const { auth } = require('./middlewares/auth');
 const { handleError } = require('./middlewares/handleError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+const allowedCors = [
+  'https://mesto.ivanserov.nomoredomains.sbs',
+];
 const { PORT, DB_URL } = require('./constants/constants');
 
 const app = express();
@@ -27,47 +30,25 @@ app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-/* const allowedCors = [
-  'http://localhost:3000/',
-  'http://localhost:3001/',
-  'http://mesto.IvanSerov.nomoredomains.sbs/signup',
-  'https://mesto.IvanSerov.nomoredomains.sbs/',
-  'http://api.mesto.IvanSerov.nomoredomains.sbs/',
-  'https://api.mesto.IvanSerov.nomoredomains.sbs/',
-];
-
 app.use((req, res, next) => {
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   const { origin } = req.headers;
-  const { method } = req;
   const requestHeaders = req.headers['access-control-request-headers'];
-
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   if (allowedCors.includes(origin)) {
+    const { method } = req;
     res.header('Access-Control-Allow-Origin', origin);
-  }
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', requestHeaders);
-    return res.end();
+    if (method === 'OPTIONS') {
+      res.header('Access-Control-Allow-Headers', requestHeaders);
+      res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+      return res.end();
+    }
   }
   next();
-}); */
+});
 
 app.use(requestLogger);
 
-/* const options = {
-  origin: [
-    'http://localhost:3000',
-    'http://mesto.IvanSerov.nomoredomains.sbs/',
-    'https://mesto.IvanSerov.nomoredomains.sbs/',
-    'http://api.mesto.IvanSerov.nomoredomains.sbs/',
-    'https://api.mesto.IvanSerov.nomoredomains.sbs/',
-  ],
-  credentials: true,
-};
-
-app.use('*', cors(options)); */
-app.use(cors());
+//app.use(cors());
 
 app.get('/crash-test', () => {
   setTimeout(() => {

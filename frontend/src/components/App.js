@@ -195,7 +195,7 @@ function App() {
   }
 
   const handleRegister = (password, email) => {
-    console.log(email, password);
+    //console.log(email, password);
     auth.register(email, password)
       .then((res) => {
         if (res) {

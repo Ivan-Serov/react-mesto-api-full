@@ -1,18 +1,18 @@
 {
   "main.css": "/static/css/main.6227206d.chunk.css",
-  "main.js": "/static/js/main.f60c03a6.chunk.js",
-  "main.js.map": "/static/js/main.f60c03a6.chunk.js.map",
+  "main.js": "/static/js/main.d9f9f65e.chunk.js",
+  "main.js.map": "/static/js/main.d9f9f65e.chunk.js.map",
   "static/js/1.49274553.chunk.js": "/static/js/1.49274553.chunk.js",
   "static/js/1.49274553.chunk.js.map": "/static/js/1.49274553.chunk.js.map",
   "static/js/2.0c2a2063.chunk.js": "/static/js/2.0c2a2063.chunk.js",
   "static/js/2.0c2a2063.chunk.js.map": "/static/js/2.0c2a2063.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.d8b21ae5.js",
   "runtime~main.js.map": "/static/js/runtime~main.d8b21ae5.js.map",
-  "static/media/index.css": "/static/media/like_active.302bdf76.svg",
+  "static/media/index.css": "/static/media/Trash.d8078343.svg",
   "static/media/success-icon.svg": "/static/media/success-icon.e38b395c.svg",
   "static/media/fail-icon.svg": "/static/media/fail-icon.4072126c.svg",
   "static/css/main.6227206d.chunk.css.map": "/static/css/main.6227206d.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.6c5d5db88e2249ecfec72348810b5332.js": "/precache-manifest.6c5d5db88e2249ecfec72348810b5332.js",
+  "precache-manifest.fa2cef76363911d8735cc6b939599b35.js": "/precache-manifest.fa2cef76363911d8735cc6b939599b35.js",
   "service-worker.js": "/service-worker.js"
 }
