@@ -13,7 +13,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT, DB_URL } = require('./constants/constants');
 
 const app = express();
-
+app.use(cors());
 app.use(helmet());
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -21,36 +21,13 @@ const limiter = rateLimit({
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
-app.use(cors());
+
 // Apply the rate limiting middleware to all requests
 app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-/* const allowedCors = [
-  'https://mesto.ivanserov.nomoredomains.sbs',
-  'http://mesto.ivanserov.nomoredomains.sbs',
-  'localhost:3000',
-]; */
-
-/* app.use((req, res, next) => {
-  const { origin } = req.headers;
-  const requestHeaders = req.headers['access-control-request-headers'];
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  if (allowedCors.includes(origin)) {
-    const { method } = req;
-    res.header('Access-Control-Allow-Origin', origin);
-    if (method === 'OPTIONS') {
-      res.header('Access-Control-Allow-Headers', requestHeaders);
-      res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-      return res.end();
-    }
-  }
-  next();
-}); */
-
 app.use(requestLogger);
-
 
 app.get('/crash-test', () => {
   setTimeout(() => {
