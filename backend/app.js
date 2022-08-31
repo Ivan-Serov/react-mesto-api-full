@@ -21,12 +21,12 @@ const limiter = rateLimit({
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
-
+app.use(cors());
 // Apply the rate limiting middleware to all requests
 app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+
 /* const allowedCors = [
   'https://mesto.ivanserov.nomoredomains.sbs',
   'http://mesto.ivanserov.nomoredomains.sbs',
