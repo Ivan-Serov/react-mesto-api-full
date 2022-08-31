@@ -10,11 +10,6 @@ const { auth } = require('./middlewares/auth');
 const { handleError } = require('./middlewares/handleError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-/* const allowedCors = [
-  'https://mesto.ivanserov.nomoredomains.sbs',
-  'http://mesto.ivanserov.nomoredomains.sbs',
-  'localhost:3000'
-]; */
 const { PORT, DB_URL } = require('./constants/constants');
 
 const app = express();
@@ -31,8 +26,13 @@ const limiter = rateLimit({
 app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+/* const allowedCors = [
+  'https://mesto.ivanserov.nomoredomains.sbs',
+  'http://mesto.ivanserov.nomoredomains.sbs',
+  'localhost:3000',
+]; */
 
-// eslint-disable-next-line consistent-return
 /* app.use((req, res, next) => {
   const { origin } = req.headers;
   const requestHeaders = req.headers['access-control-request-headers'];
@@ -50,20 +50,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 }); */
 
 app.use(requestLogger);
-const options = {
-  origin: [
-    'https://mesto.ivanserov.nomoredomains.sbs',
-    'http://mesto.ivanserov.nomoredomains.sbs',
-    'localhost:3000',
-    'http://api.mesto.ivanserov.nomoredomains.sbs',
-    'https://api.mesto.ivanserov.nomoredomains.sbs',
-  ],
-  credentials: true,
-};
 
-app.use('*', cors(options));
-
-//app.use(cors());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
